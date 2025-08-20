@@ -4,7 +4,7 @@
 
 void add(int r1, int r2, int m1[][3], int m2[][3]) {
     int result[MAX_TERMS][3];
-    int num_terms_result = 0;
+    int ntr = 0;
     int i = 0, j = 0, k = 0;
     
     while (i < r1 && j < r2) {
@@ -60,10 +60,10 @@ void add(int r1, int r2, int m1[][3], int m2[][3]) {
         k++;
     }
     
-    num_terms_result = k;
+    ntr = k;
     
     printf("\nResult matrix (sum):\n");
-    for (i = 0; i < num_terms_result; i++) {
+    for (i = 0; i < ntr; i++) {
         printf("%d\t%d\t%d\n", result[i][0], result[i][1], result[i][2]);
     }
 }
