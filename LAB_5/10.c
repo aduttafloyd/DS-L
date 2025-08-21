@@ -19,6 +19,19 @@ struct Node* insertAtBegin(struct Node* head, int data) {
     return newNode;
 }
 
+struct Node* createList(struct Node* head, int data) {
+    struct Node* newNode = createNode(data);
+    if (head == NULL) {
+        return newNode;
+    }
+    struct Node* temp = head;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+    temp->next = newNode;
+    return head;
+}
+
 struct Node* insertAtEnd(struct Node* head, int data) {
     struct Node* newNode = createNode(data);
     if (head == NULL) {
@@ -76,11 +89,12 @@ int main() {
 
     while (1) {
         printf("\nSingle Linked List Operations:\n");
-        printf("1. Insert at beginning\n");
-        printf("2. Insert at end\n");
-        printf("3. Delete node\n");
-        printf("4. Display list\n");
-        printf("5. Exit\n");
+        printf("1. Create List\n");
+        printf("2. Insert at beginning\n");
+        printf("3. Insert at end\n");
+        printf("4. Delete node\n");
+        printf("5. Display list\n");
+        printf("6. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
@@ -92,10 +106,15 @@ int main() {
                 printf("Enter %d data(s): ", n);
                 for(int i=0;i<n;i++){
                     scanf("%d", &data);
-                    head = insertAtBegin(head, data);
+                    head = createList(head, data);
                 }
                 break;
             case 2:
+                printf("Enter data to insert: ");
+                scanf("%d", &data);
+                head = insertAtBegin(head, data);
+                break;
+            case 3:
                 printf("Enter number of data to insert: ");
                 scanf("%d", &n);
                 printf("Enter %d data(s): ", n);
@@ -104,15 +123,15 @@ int main() {
                     head = insertAtEnd(head, data);
                 }
                 break;
-            case 3:
+            case 4:
                 printf("Enter data to delete: ");
                 scanf("%d", &data);
                 head = deleteNode(head, data);
                 break;
-            case 4:
+            case 5:
                 displayList(head);
                 break;
-            case 5:
+            case 6:
                 exit(0);
             default:
                 printf("Invalid choice\n");
